@@ -16,6 +16,13 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class CovidService {
 
+    public void fetchCovidData() {
+        String iso = "GT";  // País por defecto
+        String date = LocalDate.now().toString();  // Fecha actual
+        ReportResponse report = this.getCovidReport(iso, date);
+        System.out.println("Datos obtenidos: " + report);
+    }
+
     private final RestTemplate restTemplate;
 
     @Value("${rapidapi.key}")
@@ -39,6 +46,7 @@ public class CovidService {
                 HttpMethod.GET,
                 entity,
                 ReportResponse.class
+
         );
 
         return response.getBody();
