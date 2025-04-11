@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19 Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h1>Reportes COVID-19</h1>
+
+<input type="text" id="regionFilter" placeholder="Filtrar por región">
+<button onclick="loadData()">Cargar</button>
+
+<canvas id="casesChart" width="400" height="200"></canvas>
+
+<table>
+    <thead>
+    <tr>
+        <th>Región</th>
+        <th>Provincia</th>
+        <th>Casos</th>
+        <th>Muertes</th>
+        <th>Recuperados</th>
+    </tr>
+    </thead>
+    <tbody id="tablaDatos">
+    </tbody>
+</table>
+
+<script>
+    function loadData() {
+        const region = document.getElementById('regionFilter').value;
+        fetch('/api/covid/reportes?region=' + region)
+            .then(response => response.json())
+            .then(data => {
+                renderChart(data);
+                renderTable(data);
+            });
+    }
+
+    function renderChart(data) {
+        const ctx = document.getElementById('casesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(r => r.region),
+                datasets: [{
+                    label: 'Casos Confirmados',
+                    data: data.map(r => r.confirmed),
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                }]
+            }
+        });
+    }
+
+    function renderTable(data) {
+        const tbody = document.getElementById('tablaDatos');
+        tbody.innerHTML = '';
+        data.forEach(r => {
+            const row = `<tr>
+                <td>${r.region}</td>
+                <td>${r.provincia}</td>
+                <td>${r.confirmed}</td>
+                <td>${r.deaths}</td>
+                <td>${r.recovered}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+</script>
+</body>
+</html>
