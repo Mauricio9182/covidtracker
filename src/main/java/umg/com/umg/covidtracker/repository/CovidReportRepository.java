@@ -1,6 +1,6 @@
-package umg.com.umg.covidtracker.config.repository;
+package umg.com.umg.covidtracker.repository;
 
-import umg.com.umg.covidtracker.config.model.CovidReport;
+import umg.com.umg.covidtracker.model.CovidReport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

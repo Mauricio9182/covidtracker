@@ -1,64 +1,73 @@
-<dependencies>
-    <!-- Core y Web -->
-    <dependency>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter</artifactId>
-        <version>${spring-boot.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>${spring-boot.version}</version>
-    </dependency>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.18</version>
+        <relativePath/>
+    </parent>
 
-    <!-- JPA y MySQL -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
-        <version>${spring-boot.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.33</version>
-        <scope>runtime</scope>
-    </dependency>
+    <groupId>umg.com.umg</groupId>
+    <artifactId>covid-tracker</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>CovidTracker</name>
+    <description>Sistema de seguimiento COVID</description>
 
-    <!-- Jackson -->
-    <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.15.3</version>
-    </dependency>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-    <!-- Lombok -->
-    <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>1.18.30</version>
-        <scope>provided</scope>
-    </dependency>
+    <dependencies>
+        <!-- Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-    <!-- Swagger -->
-    <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-boot-starter</artifactId>
-        <version>3.0.0</version>
-    </dependency>
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
-    <!-- Test (JUnit + Mockito) -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <version>${spring-boot.version}</version>
-        <scope>test</scope>
-    </dependency>
+        <!-- JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version> <!-- ✅ Usá esta versión o una que prefieras -->
+        </dependency>
 
 
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        <version>${spring-boot.version}</version>
-    </dependency>
-    -->
-</dependencies>
+        <!-- DevTools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

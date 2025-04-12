@@ -1,4 +1,4 @@
-package umg.com.umg.covidtracker.config.model;
+package umg.com.umg.covidtracker.model;
 
 import lombok.Data;
 import java.util.List;
