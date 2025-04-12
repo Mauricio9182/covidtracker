@@ -1,14 +1,10 @@
-package umg.com.umg.covidtracker.runner;
+package umg.com.umg.covidtracker.config.runner;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-import umg.com.umg.covidtracker.model.ReportResponse;
-import umg.com.umg.covidtracker.service.CovidService;
+import umg.com.umg.covidtracker.config.service.CovidService;
+import umg.com.umg.covidtracker.config.model.ReportResponse;
 
 @Component
 @RequiredArgsConstructor

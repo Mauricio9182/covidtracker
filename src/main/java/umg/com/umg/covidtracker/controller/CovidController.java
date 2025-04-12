@@ -1,12 +1,12 @@
-package umg.com.umg.covidtracker.controller;
+package umg.com.umg.covidtracker.config.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import umg.com.umg.covidtracker.model.CovidReport;
-import umg.com.umg.covidtracker.model.ReportResponse;
-import umg.com.umg.covidtracker.service.CovidService;
+import umg.com.umg.covidtracker.config.model.CovidReport;
+import umg.com.umg.covidtracker.config.model.ReportResponse;
+import umg.com.umg.covidtracker.config.service.CovidService;
 
 import java.time.LocalDate;
 import java.util.List;

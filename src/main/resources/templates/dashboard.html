@@ -2,37 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>COVID-19 Dashboard</title>
+    <title>Dashboard COVID</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h1>Reportes COVID-19</h1>
+<h1>Dashboard COVID-19</h1>
 
-<input type="text" id="regionFilter" placeholder="Filtrar por región">
-<button onclick="loadData()">Cargar</button>
+<label for="regionFilter">Filtrar por región:</label>
+<input type="text" id="regionFilter" placeholder="Ej. Guatemala" />
+<button onclick="loadData()">Buscar</button>
 
+<h2>Gráfico de Casos Confirmados</h2>
 <canvas id="casesChart" width="400" height="200"></canvas>
 
-<table>
+<h2>Tabla de Datos</h2>
+<table border="1">
     <thead>
     <tr>
         <th>Región</th>
         <th>Provincia</th>
-        <th>Casos</th>
+        <th>Confirmados</th>
         <th>Muertes</th>
         <th>Recuperados</th>
     </tr>
     </thead>
     <tbody id="tablaDatos">
+    <!-- Datos generados por JS -->
     </tbody>
 </table>
 
-<script>
+<!-- Script con JavaScript sin interferencia de Thymeleaf -->
+<script th:inline="javascript">
     function loadData() {
         const region = document.getElementById('regionFilter').value;
         fetch('/api/covid/reportes?region=' + region)
             .then(response => response.json())
             .then(data => {
+                console.log("Datos recibidos:", data);
                 renderChart(data);
                 renderTable(data);
             });
@@ -47,7 +53,7 @@
                 datasets: [{
                     label: 'Casos Confirmados',
                     data: data.map(r => r.confirmed),
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
                 }]
             }
         });
@@ -58,15 +64,17 @@
         tbody.innerHTML = '';
         data.forEach(r => {
             const row = `<tr>
-                <td>${r.region}</td>
-                <td>${r.provincia}</td>
-                <td>${r.confirmed}</td>
-                <td>${r.deaths}</td>
-                <td>${r.recovered}</td>
-            </tr>`;
+                    <td>${r.region}</td>
+                    <td>${r.province ? r.province : ''}</td>
+                    <td>${r.confirmed}</td>
+                    <td>${r.deaths}</td>
+                    <td>${r.recovered}</td>
+                </tr>`;
             tbody.innerHTML += row;
         });
     }
+
+    window.onload = loadData;
 </script>
 </body>
 </html>

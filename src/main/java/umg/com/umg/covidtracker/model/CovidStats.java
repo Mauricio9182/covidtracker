@@ -1,4 +1,4 @@
-package umg.com.umg.covidtracker.model;
+package umg.com.umg.covidtracker.config.model;
 
 public class CovidStats {
     private String country;
