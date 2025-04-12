@@ -44,9 +44,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version> <!-- ✅ Usá esta versión o una que prefieras -->
+            <version>8.0.33</version>
         </dependency>
-
 
         <!-- DevTools -->
         <dependency>
@@ -55,10 +54,19 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

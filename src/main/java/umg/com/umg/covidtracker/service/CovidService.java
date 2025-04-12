@@ -31,6 +31,8 @@ public class CovidService {
         return reportRepository.findAll();
     }
 
+
+
     private final RestTemplate restTemplate;
 
 
